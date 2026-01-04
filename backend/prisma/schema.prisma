@@ -1,0 +1,32 @@
+// Prisma schema for Gong-gu Scout AI
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Influencer {
+  id                  Int       @id @default(autoincrement())
+  username            String    @unique
+  displayName         String
+  categoryTag         String    // 육아, 주방/리빙, 헬스/다이어트, 뷰티, 패션, 테크
+  followerCount       Int
+  avgReelsView        Int       // Median views excluding outliers
+  engagementRate      Float     // (likes + comments) / followers
+  lastGongguDate      DateTime? // Most recent sales post date
+  salesFatigueScore   Int       @default(1) // 1-10, higher = more fatigue
+  bioLinkUrl          String?
+  hasActiveLink       Boolean   @default(false)
+  profileImageUrl     String?
+  bio                 String?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  @@index([categoryTag])
+  @@index([followerCount])
+  @@index([avgReelsView])
+}
