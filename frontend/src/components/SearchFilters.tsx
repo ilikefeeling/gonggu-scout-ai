@@ -25,6 +25,9 @@ const CATEGORIES = [
     { value: '게임', label: '게임' },
 ];
 
+// API base URL - use environment variable or default to local
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+
 function SearchFilters({ filters, onFiltersChange }: SearchFiltersProps) {
     const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         onFiltersChange({ ...filters, category: e.target.value });
@@ -156,4 +159,5 @@ function SearchFilters({ filters, onFiltersChange }: SearchFiltersProps) {
     );
 }
 
+export { API_URL };
 export default SearchFilters;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Influencer, SearchFilters } from './types';
-import SearchFiltersComponent from './components/SearchFilters';
+import SearchFiltersComponent, { API_URL } from './components/SearchFilters';
 import ResultsList from './components/ResultsList';
 import InfluencerDetail from './components/InfluencerDetail';
 import './App.css';
@@ -37,7 +37,7 @@ function App() {
             params.append('maxReelsView', filters.maxReelsView.toString());
             params.append('sortBy', filters.sortBy);
 
-            const response = await fetch(`/api/influencers?${params.toString()}`);
+            const response = await fetch(`${API_URL}/api/influencers?${params.toString()}`);
             const data = await response.json();
 
             if (data.success) {
