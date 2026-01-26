@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Instagram 스크래퍼 관련
+session.json
+*.log
+influencers_*.csv
+
+# 보안 - 절대 업로드 금지!
+config.py
+
+# OS
+.DS_Store
+Thumbs.db
